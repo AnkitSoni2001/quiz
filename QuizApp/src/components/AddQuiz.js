@@ -1,11 +1,12 @@
 import React, { useContext, useRef } from "react";
 import { useState } from "react";
 import quizContext from "../context/quizs/quizContext";
+import "../Style/AddQuiz.css"
 
 const AddQuiz = (props) => {
   const context = useContext(quizContext);
   const { addQuiz, editCode } = context;
- 
+
   const [select, setSelect] = useState("yes");
 
 
@@ -28,7 +29,7 @@ const AddQuiz = (props) => {
     answer: "",
     title: "",
     mcq: select,
-    code:""
+    code: ""
   });
   const handleClick = (e) => {
     e.preventDefault(); //page doesn't get reload
@@ -64,37 +65,37 @@ const AddQuiz = (props) => {
   const [gcode, setGcode] = useState("")
 
 
-const test = () =>{
-  // generate code
-  const publish = ()=>{
-    var len = 6;
-    var arr = "1234567890qwertyuiopasdfghjklzxcvbnm"
-    var ans= "";
-    for (var i = len; i > 0; i--) {
-			ans+=
-			arr[Math.floor(Math.random() * arr.length)];
-		}
-    console.log(ans);
-    
-    code = ans;
-    console.log(code, "CODE");
-    setGcode(code);
+  const test = () => {
+    // generate code
+    const publish = () => {
+      var len = 6;
+      var arr = "1234567890qwertyuiopasdfghjklzxcvbnm"
+      var ans = "";
+      for (var i = len; i > 0; i--) {
+        ans +=
+          arr[Math.floor(Math.random() * arr.length)];
+      }
+      console.log(ans);
+
+      code = ans;
+      console.log(code, "CODE");
+      setGcode(code);
+    }
+    publish();
+    // console.log(code, "OUTSIIDE");
+
+
+    // add code to the questions
+    const editTESTCode = () => {
+      //console.log('updating quiz...', quiz);
+      editCode(code)
+      console.log(code, "INSIDE EDITCODE")
+      props.showAlert("Quiz Published Successfully", "success");
+    }
+    editTESTCode()
+
   }
-  publish();
-  // console.log(code, "OUTSIIDE");
 
-
-  // add code to the questions
-  const editTESTCode =()=>{
-    //console.log('updating quiz...', quiz);
-    editCode( code )
-    console.log(code, "INSIDE EDITCODE")
-    props.showAlert("Quiz Published Successfully", "success");
-  }
-  editTESTCode()
-
-}
-  
 
 
 
@@ -104,15 +105,17 @@ const test = () =>{
   return (
     <div>
       <div className="container my-3">
-        <h2>Add your Quiz</h2> 
+        <h2>Add your Quiz</h2>
         {/* http://localhost:1000/api/quiz/codeupdate */}
-        <a onClick={test} className="btn btn-primary " tabIndex="-1" role="button">Publish</a>
-        <input type="text" name="code" value={gcode} className="mx-3"/>
+
+
+        <a onClick={test} className="btn btn-primary publish_btn" tabIndex="-1" role="button">Publish</a>
+        <input type="text" name="code" value={gcode} className="mx-3 code_input" />
 
         <div className="mb-3 my-2">
           <label htmlFor="title" className="form-label">
             {" "}
-            Question{" "}
+            Question :{" "}
           </label>
           <input
             type="text"
@@ -123,14 +126,14 @@ const test = () =>{
             value={quiz.question}
             minLength={5}
             required
-            placeholder="write your Question here"
+            placeholder="Write your Question here"
           />
         </div>
         <div className="col">
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               {" "}
-              title{" "}
+              Title :{" "}
             </label>
             <input
               type="text"
@@ -229,7 +232,7 @@ const test = () =>{
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               {" "}
-              Answer of the above question{" "}
+              Answer of the above question :{" "}
             </label>
             <input
               type="text"
@@ -244,17 +247,17 @@ const test = () =>{
             />
           </div>
 
-          <div className="row my-2 mx-1">Is this question MCQ:
-          <select name="mcq" value={select} onChange={e=>setSelect(e.target.value)} style={{width:"100px", marginLeft: "100px", borderColor: "grey"}}>
-            <option value="Yes" defaultValue={"yes"}>yes</option>
-            <option value="No">no</option>
-          </select>
-        </div>
+          <div className="row my-2 mx-1">Is this question MCQ :
+            <select className="select" name="mcq" value={select} onChange={e => setSelect(e.target.value)} style={{ width: "100px", marginLeft: "100px", borderColor: "grey" }}>
+              <option value="Yes" defaultValue={"yes"}>Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
 
         </div>
 
 
-        
+
 
         <button
           disabled={
@@ -266,7 +269,7 @@ const test = () =>{
             quiz.answer.length < 3
           }
           type="submit"
-          className="btn btn-dark"
+          className="btn btn-dark add_btn"
           onClick={handleClick}
         >
           Add Quiz

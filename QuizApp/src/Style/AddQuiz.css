@@ -1,0 +1,31 @@
+.publish_btn{
+    background-color: #FF095C !important;
+    border: none;
+}
+
+.code_input{
+    border-radius: 5px !important;
+    background-color: gainsboro;
+    border: none;
+    height: 2.2rem;
+}
+.select{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    background-color: gainsboro;
+    border: none;
+
+}
+
+.add_btn{
+    background-color: #19105B !important;
+}
+
+.form-control{
+    background-color: gainsboro;
+}
+.form-label{
+    /* font-weight: bolder; */
+}
