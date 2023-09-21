@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { json } from 'react-router-dom';
 import Game from './Game';
 import '../Style/PlayQuizEntry.css'
@@ -57,7 +57,14 @@ const PlayQuizEntry = () => {
       document.getElementById('btn').disabled = true;
     }
     disableBtn();
+
   }
+
+
+useEffect(()=>{
+  setVal(sessionStorage.setItem("val", "0"))
+},[])
+
 
 
   return (
@@ -75,7 +82,7 @@ const PlayQuizEntry = () => {
 
         {/* <h2>Message: {message}</h2> */}
 
-        {/* <h2>Updated: {updated}</h2> */}
+
 
         <button className='btn btn-primary btn_play' id="btn2" onClick={fetchallquiz}>Play</button>
       </div>
@@ -91,9 +98,10 @@ const PlayQuizEntry = () => {
 
       <div className={seq == '1' ? 'd-flex' : 'd-none'}> Your Score is : {val} </div>
 
+
       {/* <button >GENERATE SCORE</button>  */}
       <div>
-        <a href="/playquiz" className={seq == '1' ? "btn btn-danger my-2 ":'d-none mx-2'} tabIndex="-1" role="button">RESET</a>
+        <a href="/playquiz" className={seq == '1' ? "btn btn-danger my-2 " : 'd-none mx-2'} tabIndex="-1" role="button">RESET</a>
       </div>
     </div>
   )
