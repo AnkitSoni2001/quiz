@@ -1,9 +1,7 @@
-import "./App.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import QuizState from "./context/quizs/QuizState";
-import About from "./components/About";
 import Alert from "./components/Alert";
 import Login from "./components/Login";
 import PlayQuizEntry from "./components/PlayQuizEntry";
@@ -30,7 +28,6 @@ function App() {
           <div className="container">
             <Routes>
               <Route exact path="/" element={<Home showAlert={showAlert}/>} />
-              <Route exact path="/about" element={<About />} />
               <Route exact path="/playquiz" element={<PlayQuizEntry />} />
               <Route exact path="/login" element={<Login showAlert={showAlert}/>} />
               <Route exact path="/signup" element={<Signup showAlert={showAlert}/>} />

@@ -105,12 +105,15 @@ const AddQuiz = (props) => {
   return (
     <div>
       <div className="container my-3">
-        <h2>Add your Quiz</h2>
         {/* http://localhost:1000/api/quiz/codeupdate */}
+        <div className="generate_pin">
+          <a onClick={test} className="btn btn-primary publish_btn" tabIndex="-1" role="button">GENERATE PIN</a>
+          <input type="text" name="code" value={gcode} className="mx-3 code_input" />
 
+        </div>
 
-        <a onClick={test} className="btn btn-primary publish_btn" tabIndex="-1" role="button">Publish</a>
-        <input type="text" name="code" value={gcode} className="mx-3 code_input" />
+        
+        <h2>Add your Quiz</h2>
 
         <div className="mb-3 my-2">
           <label htmlFor="title" className="form-label">
@@ -247,12 +250,12 @@ const AddQuiz = (props) => {
             />
           </div>
 
-          <div className="row my-2 mx-1">Is this question MCQ :
+          {/* <div className="row my-2 mx-1">Is this question MCQ :
             <select className="select" name="mcq" value={select} onChange={e => setSelect(e.target.value)} style={{ width: "100px", marginLeft: "100px", borderColor: "grey" }}>
               <option value="Yes" defaultValue={"yes"}>Yes</option>
               <option value="No">No</option>
             </select>
-          </div>
+          </div> */}
 
         </div>
 

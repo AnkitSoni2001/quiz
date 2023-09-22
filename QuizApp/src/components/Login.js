@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../Style/Login.css'
 
 const Login = (props) => {
   const [credential, setcredential] = useState({ email: "", password: "" });
+  
+  
   let Navigate = useNavigate();
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:1000/api/auth/login", {
@@ -20,7 +25,6 @@ const Login = (props) => {
         // console.log("authToken", localStorage.getItem('token'))
         Navigate('/');
         props.showAlert("Logged In successfully", "success")
-
     }
     else{
       props.showAlert("Invalid Details", "danger")
@@ -45,9 +49,9 @@ const Login = (props) => {
             onChange={onChange}
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" className="form-text">
+          {/* <div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
-          </div>
+          </div> */}
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
@@ -62,8 +66,8 @@ const Login = (props) => {
             name="password"
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button type="submit" className="login_btn">
+          Login
         </button>
       </form>
     </div>

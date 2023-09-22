@@ -103,6 +103,14 @@ useEffect(()=>{
       <div>
         <a href="/playquiz" className={seq == '1' ? "btn btn-danger my-2 " : 'd-none mx-2'} tabIndex="-1" role="button">RESET</a>
       </div>
+      {/* <div>
+        <button className={seq == '1' ? "btn btn-danger my-2 " : 'd-none mx-2'} id="btn2" onClick={quizs.map((quiz) => {
+        return (
+          <Game quiz={quiz} key={quiz._id} />
+
+        );
+      })}>RESET</button>
+      </div> */}
     </div>
   )
 }
