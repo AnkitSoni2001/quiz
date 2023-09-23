@@ -84,13 +84,13 @@ const AddQuiz = (props) => {
     publish();
     // console.log(code, "OUTSIIDE");
 
-
+  
     // add code to the questions
     const editTESTCode = () => {
       //console.log('updating quiz...', quiz);
       editCode(code)
       console.log(code, "INSIDE EDITCODE")
-      props.showAlert("Quiz Published Successfully", "success");
+      props.showAlert("Quiz Generated Successfully", "success");
     }
     editTESTCode()
 

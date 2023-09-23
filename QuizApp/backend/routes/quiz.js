@@ -16,8 +16,8 @@ const addQuizValidation = [
 ];
 
 // Define routes using the quizController functions
-router.get("/fetchallquiz", fetchuser, quizController.fetchAllQuiz);
-router.get("/fetchallquiznoauthentication/:message", quizController.fetchAllQuizNoAuthentication);
+router.get("/fetchallquiz", fetchuser, quizController.fetchAllQuiz); //stored in backend
+router.get("/fetchallquiznoauthentication/:message", quizController.fetchAllQuizNoAuthentication); //based on code display all the message in frontend
 router.post("/addquiz", fetchuser, addQuizValidation, quizController.addQuiz);
 router.put("/updatequiz/:id", fetchuser, quizController.updateQuiz);
 router.put("/updatecode/:id", fetchuser, quizController.updateCode);

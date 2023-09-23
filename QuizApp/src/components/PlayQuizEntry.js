@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { json } from 'react-router-dom';
-import Game from './Game';
+import GameQuizCard from './GameQuizCard';
 import '../Style/PlayQuizEntry.css'
 
 
@@ -79,17 +79,14 @@ useEffect(()=>{
           onChange={handleChange}
           value={message}
         />
-
         {/* <h2>Message: {message}</h2> */}
-
-
 
         <button className='btn btn-primary btn_play' id="btn2" onClick={fetchallquiz}>Play</button>
       </div>
 
       {quizs.map((quiz) => {
         return (
-          <Game quiz={quiz} key={quiz._id} />
+          <GameQuizCard quiz={quiz} key={quiz._id} />
 
         );
       })}

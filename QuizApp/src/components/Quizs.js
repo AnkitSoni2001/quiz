@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import quizContext from "../context/quizs/quizContext";
 import AddQuiz from "./AddQuiz";
-import Quizitem from "./QuizItem";
+import QuizCard from "./QuizCard";
 
 
 const Quizs = (props) => {
@@ -193,7 +193,7 @@ const Quizs = (props) => {
         </div>
         {quizs.map((quiz) => {
           return (
-            <Quizitem quiz={quiz} key={quiz._id} updateQuiz={updateQuiz} showAlert={props.showAlert} />
+            <QuizCard quiz={quiz} key={quiz._id} updateQuiz={updateQuiz} showAlert={props.showAlert} />
           );
         })}
       </div>

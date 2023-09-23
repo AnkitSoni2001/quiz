@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-const Game = (props) => {
+const GameQuizCard = (props) => {
   const { quiz } = props;
   var [value, setValue] = useState("")
   // var [score, setScore] = useState(0)
@@ -101,9 +101,9 @@ const Game = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="row my-1">
+              {/* <div className="row my-1">
                 <div className="col">Is the question type MCQ : {quiz.mcq}</div>
-              </div>
+              </div> */}
               <div className="row my-1">
                 <div className="col">Title : {quiz.title}</div>
               </div>
@@ -117,4 +117,4 @@ const Game = (props) => {
   );
 };
 
-export default Game;
+export default GameQuizCard;

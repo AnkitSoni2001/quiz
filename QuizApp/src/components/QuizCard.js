@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import quizContext from "../context/quizs/quizContext";
-import '../Style/QuizItem.css'
+import '../Style/QuizCard.css'
 
-const Quizitem = (props) => {
+const QuizCard = (props) => {
   const context = useContext(quizContext);
   const { deleteQuiz } = context;
   const { quiz, updateQuiz } = props;
@@ -42,4 +42,4 @@ const Quizitem = (props) => {
   );
 };
 
-export default Quizitem;
+export default QuizCard;
