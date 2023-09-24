@@ -1,22 +1,17 @@
 import React, { useContext, useRef } from "react";
 import { useState } from "react";
+import { Link, useLocation } from 'react-router-dom'
 import quizContext from "../context/quizs/quizContext";
 import "../Style/AddQuiz.css"
 
 const AddQuiz = (props) => {
+
+  let location = useLocation();
+
   const context = useContext(quizContext);
   const { addQuiz, editCode } = context;
 
   const [select, setSelect] = useState("yes");
-
-
-  // const [user, setUser] = useState({ user: ""})
-
-  // const getUser = (currentUser) => {
-  //   ref.current.click();
-  //   setUser({
-  //     user :currentUser.user,
-  //   })
 
 
   const [quiz, setQuiz] = useState({
@@ -84,7 +79,7 @@ const AddQuiz = (props) => {
     publish();
     // console.log(code, "OUTSIIDE");
 
-  
+
     // add code to the questions
     const editTESTCode = () => {
       //console.log('updating quiz...', quiz);
@@ -97,8 +92,6 @@ const AddQuiz = (props) => {
   }
 
 
-
-
   const onChange = (e) => {
     setQuiz({ ...quiz, [e.target.name]: e.target.value }); //whatever value inside the quiz object will exist as it is but jo properties aage likhi ja rhi hai inko add ya overwrite kar dena
   };
@@ -107,12 +100,18 @@ const AddQuiz = (props) => {
       <div className="container my-3">
         {/* http://localhost:1000/api/quiz/codeupdate */}
         <div className="generate_pin">
-          <a onClick={test} className="btn btn-primary publish_btn" tabIndex="-1" role="button">GENERATE PIN</a>
-          <input type="text" name="code" value={gcode} className="mx-3 code_input" />
+
+          <input type="text" name="code" value={gcode} className="mx-3 pin_input" />
+          <button className="btn btn-primary generatePin_btn" onClick={test}>GENERATE PIN</button>
+          <button className="btn btn-primary Play_btn">
+            <Link className={`nav-link ${location.pathname === "/playquiz" ? "active" : ""}`} aria-current="page" to="/playquiz">
+              START QUIZ
+            </Link>
+          </button>
 
         </div>
 
-        
+
         <h2>Add your Quiz</h2>
 
         <div className="mb-3 my-2">

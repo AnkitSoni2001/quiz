@@ -16,7 +16,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark bg_navbar">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          Quiz Builder
+          Quiz Game
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -28,11 +28,11 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className={`nav-link ${location.pathname === "/playquiz" ? "active" : ""}`} aria-current="page" to="/playquiz">
                 PLAY QUIZ
               </Link>
-            </li>
+            </li> */}
           </ul>
           {!localStorage.getItem('token') ?
             <form className="d-flex" role="search">

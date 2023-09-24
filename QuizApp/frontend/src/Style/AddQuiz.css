@@ -6,19 +6,24 @@
     gap: 1rem;
 }
 
-.publish_btn{
+.generatePin_btn{
     background-color: #FF095C !important;
     border: none;
-    width: 10rem;
+    width: 14rem;
+}
+.Play_btn{
+    background-color: #19105B !important;
+    border: none;
+    width: 14rem;
 }
 
-.code_input{
+.pin_input{
     text-align: center;
     border-radius: 5px !important;
     background-color: gainsboro;
     border: none !important;
     height: 2.2rem;
-    width: 10rem;
+    width: 14rem;
 }
 .select{
     display: flex;
