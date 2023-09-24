@@ -30,7 +30,7 @@ const Signup = () => {
       } else {
         // props.showAlert("Invalid Credentials", "danger");
         // Show an error toast
-        toast.error("Invalid Credentials");
+        toast.error("User already exists");
       }
     } catch (error) {
       console.error("API Error:", error);

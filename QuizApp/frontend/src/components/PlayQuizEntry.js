@@ -98,7 +98,7 @@ useEffect(()=>{
 
       {/* <button >GENERATE SCORE</button>  */}
       <div>
-        <a href="/playquiz" className={seq == '1' ? "btn btn-danger my-2 " : 'd-none mx-2'} tabIndex="-1" role="button">RESET</a>
+        <a href="/playquiz" className={seq == '1' ? "btn btn-danger my-2" : 'd-none mx-2'} id='reset_btn' tabIndex="-1" role="button">RESET</a>
       </div>
       
     </div>
