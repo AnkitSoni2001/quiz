@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-
+require('dotenv').config(); // Load environment variables
 
 const connectToMongo = async () => {
-    const mongoURI = 'mongodb://127.0.0.1:27017/quiz';
+    const mongoURI = process.env.MONGO_URI;
 
     try{
         await mongoose.connect(mongoURI, (err)=>{

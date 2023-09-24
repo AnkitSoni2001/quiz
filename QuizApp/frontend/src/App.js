@@ -7,7 +7,6 @@ import QuizState from "./context/quizs/QuizState";
 import Login from "./components/Login";
 import PlayQuizEntry from "./components/PlayQuizEntry";
 import Signup from "./components/Signup";
-import{ useState } from 'react';
 
 function App() {
   

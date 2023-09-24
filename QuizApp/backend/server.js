@@ -1,20 +1,21 @@
 const connectToMongo = require('./db');
 const express = require('express')
-var authRouter = require('./routes/auth')
-var quizRouter = require('./routes/quiz')
-var cors = require('cors')
+const authRouter = require('./routes/auth')
+const quizRouter = require('./routes/quiz')
+const cors = require('cors')
+
+require('dotenv').config(); // Load environment variables
+
 const app = express()
-const port = 1000
+const port = process.env.PORT || 1000; // Use the PORT from .env, or default to 1000 if not specified
 
 app.use(cors())
-app.use(express.json())//if we want to use req.body this middleware is required
+app.use(express.json())// Middleware to parse JSON request bodies
 
 // Available Routes
 app.use('/api/auth', authRouter)
 app.use('/api/quiz', quizRouter)
 
-app.use('/api/auth', require('./routes/auth'))
-app.use('/api/quiz', require('./routes/quiz'))
 
 connectToMongo();
 
