@@ -68,7 +68,7 @@ useEffect(()=>{
 
 
   return (
-    <div>
+    <div className='playQuixEntry_container'>
       <div className='pin_play'>
         <input
           className='input_gamepin'
@@ -93,158 +93,16 @@ useEffect(()=>{
 
       <button className={seq == '1' ? 'btn btn-primary' : 'd-none mx-2'} id="btn" onClick={myFunction}>  GENERATE SCORE </button>
 
-      <div className={seq == '1' ? 'd-flex' : 'd-none'}> Your Score is : {val} </div>
+      <div className={seq == '1' ? 'd-flex' : 'd-none'}> <h2>Your Score is : {val} </h2></div>
 
 
       {/* <button >GENERATE SCORE</button>  */}
       <div>
         <a href="/playquiz" className={seq == '1' ? "btn btn-danger my-2 " : 'd-none mx-2'} tabIndex="-1" role="button">RESET</a>
       </div>
-      {/* <div>
-        <button className={seq == '1' ? "btn btn-danger my-2 " : 'd-none mx-2'} id="btn2" onClick={quizs.map((quiz) => {
-        return (
-          <Game quiz={quiz} key={quiz._id} />
-
-        );
-      })}>RESET</button>
-      </div> */}
+      
     </div>
   )
 }
 
 export default PlayQuizEntry;
-
-
-// import React, { useEffect, useState, useContext } from 'react';
-// import { json } from 'react-router-dom';
-// import quizContext from "../context/quizs/quizContext";
-// import GameQuizCard from './GameQuizCard';
-// import axios from "axios"; // Import Axios
-// import '../Style/PlayQuizEntry.css'
-
-
-// const PlayQuizEntry = () => {
-
-//   const context = useContext(quizContext);
-//   const { fetchAllQuiz } = context;
-
-//   const [message, setMessage] = useState('');
-//   const [seq, setSeq] = useState("")
-//   const quizsInitial = []
-//   const [quizs, setQuizs] = useState(quizsInitial)
-
-//   var [val, setVal] = useState('')
-
-
-//   // var TEST = localStorage.getItem("val");
-
-//   // var windowsvariable = sessionStorage.getItem(window.val);
-
-
-
-//   const handleChange = (event) => {
-//     setMessage(event.target.value);
-//   };
-
-//   const handleClick = () => {
-//     // 👇 "message" stores input field value
-//     // setUpdated(message);
-//   };
-
-
-//   const fetchallquiz =  () => {
-//     // e.preventDefault();
-//     fetchAllQuiz(message, setSeq);
-    
-//   };
-//   // const fetchallquiz = async () => {
-//   //   try {
-//   //     const response = await axios.get(`http://localhost:1000/api/quiz/fetchallquiznoauthentication/${message}`, {
-//   //       headers: {
-//   //         'Content-Type': 'application/json',
-//   //         "auth-token": localStorage.getItem('token')
-//   //       }
-//   //     });
-
-//   //     const json = response.data;
-//   //     // console.log(json, "FETCH");
-//   //     setSeq('1');
-//   //     setQuizs(json);
-
-//   //     // Disable the button with id 'btn2'
-//   //     const disableBtn = () => {
-//   //       document.getElementById('btn2').disabled = true;
-//   //     };
-//   //     disableBtn();
-//   //   } catch (error) {
-//   //     console.error(error.message);
-//   //     // Handle error here
-//   //   }
-//   // };
-
-
-//   console.log(seq);
-
-//   const myFunction = () => {
-//     console.log(sessionStorage.getItem("val"))
-//     setVal(sessionStorage.getItem("val"))
-//     const disableBtn = () => {
-//       document.getElementById('btn').disabled = true;
-//     }
-//     disableBtn();
-
-//   }
-
-
-//   useEffect(() => {
-//     setVal(sessionStorage.setItem("val", "0"))
-//   }, [])
-
-
-
-//   return (
-//     <div>
-//       <div className='pin_play'>
-//         <input
-//           className='input_gamepin'
-//           type="text"
-//           id="message"
-//           name="message"
-//           placeholder='Game PIN'
-//           onChange={handleChange}
-//           value={message}
-//         />
-//         {/* <h2>Message: {message}</h2> */}
-
-//         <button className='btn btn-primary btn_play' id="btn2" onClick={fetchallquiz}>Play</button>
-//       </div>
-
-//       {quizs.map((quiz) => {
-//         return (
-//           <GameQuizCard quiz={quiz} key={quiz._id} />
-
-//         );
-//       })}
-
-//       <button className={seq == '1' ? 'btn btn-primary' : 'd-none mx-2'} id="btn" onClick={myFunction}>  GENERATE SCORE </button>
-
-//       <div className={seq == '1' ? 'd-flex' : 'd-none'}> Your Score is : {val} </div>
-
-
-//       {/* <button >GENERATE SCORE</button>  */}
-//       <div>
-//         <a href="/playquiz" className={seq == '1' ? "btn btn-danger my-2 " : 'd-none mx-2'} tabIndex="-1" role="button">RESET</a>
-//       </div>
-//       {/* <div>
-//         <button className={seq == '1' ? "btn btn-danger my-2 " : 'd-none mx-2'} id="btn2" onClick={quizs.map((quiz) => {
-//         return (
-//           <Game quiz={quiz} key={quiz._id} />
-
-//         );
-//       })}>RESET</button>
-//       </div> */}
-//     </div>
-//   )
-// }
-
-// export default PlayQuizEntry;

@@ -1,3 +1,6 @@
+.playQuixEntry_container{
+    margin-top: 4rem;
+}
 .input_gamepin{
     display: flex;
     justify-content: center;

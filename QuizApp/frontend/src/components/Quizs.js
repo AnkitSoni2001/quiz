@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import quizContext from "../context/quizs/quizContext";
 import AddQuiz from "./AddQuiz";
 import QuizCard from "./QuizCard";
@@ -43,7 +45,9 @@ const Quizs = (props) => {
     //console.log('updating note...', note);
     editQuiz(quiz.id, quiz.equestion, quiz.eoption1, quiz.eoption2, quiz.eoption3, quiz.eoption4, quiz.eanswer)
     refClose.current.click();
-    props.showAlert("Updated Successfully", "success");
+    // props.showAlert("Updated Successfully", "success");
+    toast.success("Updated Successfully");
+    
   }
 
   const onChange = (e) => {
@@ -52,7 +56,7 @@ const Quizs = (props) => {
 
   return (
     <>
-      <AddQuiz showAlert={props.showAlert} />
+      <AddQuiz/>
       {/* <!-- Button trigger modal --> */}
       <button
         type="button"
@@ -193,7 +197,7 @@ const Quizs = (props) => {
         </div>
         {quizs.map((quiz) => {
           return (
-            <QuizCard quiz={quiz} key={quiz._id} updateQuiz={updateQuiz} showAlert={props.showAlert} />
+            <QuizCard quiz={quiz} key={quiz._id} updateQuiz={updateQuiz}/>
           );
         })}
       </div>

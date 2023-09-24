@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import quizContext from "../context/quizs/quizContext";
 import '../Style/QuizCard.css'
 
@@ -34,7 +36,7 @@ const QuizCard = (props) => {
           <div className="row my-1">
             <div className="col">Title : {quiz.title}</div>
           </div>
-          <i className="fa-solid fa-trash mx-2" onClick={() => { deleteQuiz(quiz._id); props.showAlert("deleted successfully", "success") }}></i>
+          <i className="fa-solid fa-trash mx-2" onClick={() => { deleteQuiz(quiz._id); toast.success("Deleted Successfully"); }}></i>
           <i className="fa-solid fa-file-pen mx-2" onClick={() => { updateQuiz(quiz) }}></i>
         </div>
       </div>

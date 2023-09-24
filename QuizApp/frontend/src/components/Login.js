@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import '../Style/Login.css'
 
-const Login = (props) => {
+const Login = () => {
   const [credential, setcredential] = useState({ email: "", password: "" });
-  
-  
+
   let Navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -16,22 +17,24 @@ const Login = (props) => {
         email: credential.email,
         password: credential.password,
       });
-  
+
       const json = response.data;
-  
+
       if (json.success) {
         localStorage.setItem('token', json.authToken);
         Navigate('/');
-        props.showAlert("Logged In successfully", "success");
-      } else {
-        props.showAlert("Invalid Details", "danger");
+        toast.success("Logged In successfully");
+      } 
+      else{
+        toast.error("Invalid Credentials");
       }
     } catch (error) {
       console.error("API Error:", error);
-      props.showAlert("An error occurred while logging in", "danger");
+
+      toast.error("An error occurred while logging up");
     }
   };
-  
+
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -54,11 +57,11 @@ const Login = (props) => {
   //     props.showAlert("Invalid Details", "danger")
   //   }
   // };
-  const onChange =(e)=>{
-    setcredential({...credential, [e.target.name]: e.target.value})
+  const onChange = (e) => {
+    setcredential({ ...credential, [e.target.name]: e.target.value })
   }
   return (
-    <div>
+    <div className="login_container">
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -73,9 +76,6 @@ const Login = (props) => {
             onChange={onChange}
             aria-describedby="emailHelp"
           />
-          {/* <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
-          </div> */}
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">

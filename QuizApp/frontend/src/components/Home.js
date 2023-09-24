@@ -1,12 +1,10 @@
 import React from "react";
-// import AddQuiz from "./AddQuiz";
 import Quizs from "./Quizs";
 
-const Home = (props) => {
-const {showAlert} = props
+const Home = () => {
   return (
     <div>
-      <Quizs showAlert={showAlert}/>
+      <Quizs/>
     </div>
   );
 };

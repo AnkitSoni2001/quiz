@@ -1,10 +1,12 @@
 import React, { useContext, useRef } from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link, useLocation } from 'react-router-dom'
 import quizContext from "../context/quizs/quizContext";
 import "../Style/AddQuiz.css"
 
-const AddQuiz = (props) => {
+const AddQuiz = () => {
 
   let location = useLocation();
 
@@ -50,11 +52,10 @@ const AddQuiz = (props) => {
       title: "",
       mcq: select
     });
-    props.showAlert("Added Successfully", "success");
+    toast.success("Added Successfull");
+    
   };
 
-  // const ref = useRef(null);
-  // const refClose = useRef(null);
 
   var code;
   const [gcode, setGcode] = useState("")
@@ -85,7 +86,8 @@ const AddQuiz = (props) => {
       //console.log('updating quiz...', quiz);
       editCode(code)
       console.log(code, "INSIDE EDITCODE")
-      props.showAlert("Quiz Generated Successfully", "success");
+      toast.success("Quiz Generated Successfully");
+      
     }
     editTESTCode()
 
@@ -93,12 +95,11 @@ const AddQuiz = (props) => {
 
 
   const onChange = (e) => {
-    setQuiz({ ...quiz, [e.target.name]: e.target.value }); //whatever value inside the quiz object will exist as it is but jo properties aage likhi ja rhi hai inko add ya overwrite kar dena
+    setQuiz({ ...quiz, [e.target.name]: e.target.value }); 
   };
   return (
     <div>
       <div className="container my-3">
-        {/* http://localhost:1000/api/quiz/codeupdate */}
         <div className="generate_pin">
 
           <input type="text" name="code" value={gcode} className="mx-3 pin_input" />

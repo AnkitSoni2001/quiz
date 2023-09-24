@@ -110,8 +110,6 @@ const GameQuizCard = (props) => {
             </div>
           </div>
         </div>
-        {/* <button type="submit">submit</button> */}
-
       </form>
     </div>
   );

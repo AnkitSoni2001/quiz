@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import '../Style/Signup.css'
-const Signup = (props) => {
+const Signup = () => {
   const [credential, setcredential] = useState({ name: "", email: "", password: "", confirmpassword: "" });
   let Navigate = useNavigate();
 
@@ -22,13 +24,19 @@ const Signup = (props) => {
       if (json.success) {
         localStorage.setItem('token', json.authtoken);
         Navigate('/login');
-        props.showAlert("Account created successfully", "success");
+        // props.showAlert("Account created successfully", "success");
+        // Show a success toast
+        toast.success("Account created successfully");
       } else {
-        props.showAlert("Invalid Credentials", "danger");
+        // props.showAlert("Invalid Credentials", "danger");
+        // Show an error toast
+        toast.error("Invalid Credentials");
       }
     } catch (error) {
       console.error("API Error:", error);
-      props.showAlert("An error occurred while signing up", "danger");
+      // props.showAlert("An error occurred while signing up", "danger");
+      // Show an error toast
+      toast.error("An error occurred while signing up");
     }
   };
   // const handleSubmit = async (e) => {
@@ -62,7 +70,7 @@ const Signup = (props) => {
     setcredential({ ...credential, [e.target.name]: e.target.value })
   }
   return (
-    <div className="container">
+    <div className="signup_container">
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
