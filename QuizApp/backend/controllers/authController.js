@@ -41,7 +41,6 @@ const createUser = async (req, res) => {
 // Authenticate a User
 const loginUser = async (req, res) => {
     try {
-        var success = false;
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
@@ -49,14 +48,12 @@ const loginUser = async (req, res) => {
 
         const { email, password } = req.body;
 
-        const user = await User.findOne({ email });
-        console.log(user);
-
-        if (user || (await bcrypt.compare(password, user.password))) {
+        let user = await User.findOne({ email });
+        if (user && (await bcrypt.compare(password, user.password))) {
             const authToken = jwt.sign({ user: { id: user.id } }, JWT_SECRET);
-            res.json({ success: true, authToken });
+            return res.status(201).json({ success: true, authToken });
         } else {
-            return res.status(400).json({ success: false, error: "Invalid credentials" });
+            return res.status(200).json({ success: false, error: "Invalid credentials" });
 
         }
 
