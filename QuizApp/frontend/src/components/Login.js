@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import '../Style/Login.css'
 
 const Login = (props) => {
@@ -8,28 +9,51 @@ const Login = (props) => {
   
   let Navigate = useNavigate();
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:1000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email:credential.email, password:credential.password }),
-    });
-    const json = await response.json();
-    if(json.success){
-        //save the auth token and redirect
+    try {
+      const response = await axios.post("http://localhost:1000/api/auth/login", {
+        email: credential.email,
+        password: credential.password,
+      });
+  
+      const json = response.data;
+  
+      if (json.success) {
         localStorage.setItem('token', json.authToken);
-        // console.log("authToken", localStorage.getItem('token'))
         Navigate('/');
-        props.showAlert("Logged In successfully", "success")
-    }
-    else{
-      props.showAlert("Invalid Details", "danger")
+        props.showAlert("Logged In successfully", "success");
+      } else {
+        props.showAlert("Invalid Details", "danger");
+      }
+    } catch (error) {
+      console.error("API Error:", error);
+      props.showAlert("An error occurred while logging in", "danger");
     }
   };
+  
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const response = await fetch("http://localhost:1000/api/auth/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ email:credential.email, password:credential.password }),
+  //   });
+  //   const json = await response.json();
+  //   if(json.success){
+  //       //save the auth token and redirect
+  //       localStorage.setItem('token', json.authToken);
+  //       // console.log("authToken", localStorage.getItem('token'))
+  //       Navigate('/');
+  //       props.showAlert("Logged In successfully", "success")
+  //   }
+  //   else{
+  //     props.showAlert("Invalid Details", "danger")
+  //   }
+  // };
   const onChange =(e)=>{
     setcredential({...credential, [e.target.name]: e.target.value})
   }

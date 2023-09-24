@@ -1,36 +1,63 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import '../Style/Signup.css'
 const Signup = (props) => {
   const [credential, setcredential] = useState({ name: "", email: "", password: "", confirmpassword: "" });
   let Navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, password } = credential
-    // console.log(credential);
-    const response = await fetch("http://localhost:1000/api/auth/createuser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, password }),
-    });
-    console.log(credential);
-    console.log(response)
-    const json = await response.json();
+    const { name, email, password } = credential;
 
+    try {
+      const response = await axios.post("http://localhost:1000/api/auth/createuser", {
+        name,
+        email,
+        password,
+      });
 
-    if (json.success) {
-      //save the auth token and redirect
-      localStorage.setItem('token', json.authtoken);
-      Navigate('/login');
-      props.showAlert("Account crreated successfully", "success")
+      const json = response.data;
 
-    }
-    else {
-      props.showAlert("Invalid Credentials", "danger")
+      if (json.success) {
+        localStorage.setItem('token', json.authtoken);
+        Navigate('/login');
+        props.showAlert("Account created successfully", "success");
+      } else {
+        props.showAlert("Invalid Credentials", "danger");
+      }
+    } catch (error) {
+      console.error("API Error:", error);
+      props.showAlert("An error occurred while signing up", "danger");
     }
   };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const { name, email, password } = credential
+  //   // console.log(credential);
+  //   const response = await fetch("http://localhost:1000/api/auth/createuser", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ name, email, password }),
+  //   });
+  //   console.log(credential);
+  //   console.log(response)
+  //   const json = await response.json();
+
+
+  //   if (json.success) {
+  //     //save the auth token and redirect
+  //     localStorage.setItem('token', json.authtoken);
+  //     Navigate('/login');
+  //     props.showAlert("Account crreated successfully", "success")
+
+  //   }
+  //   else {
+  //     props.showAlert("Invalid Credentials", "danger")
+  //   }
+  // };
   const onChange = (e) => {
     setcredential({ ...credential, [e.target.name]: e.target.value })
   }
